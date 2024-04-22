@@ -246,14 +246,14 @@ a {
 </head>
 <div class="background-one">
   <div class="link-container">
-    <a class="link-one" href="/student">FOR STUDENTS</a>
+    <a class="link-one" href="/student">STUDENT</a>
   </div>
 </div>
 <div class="background-two link-container">
-  <a class="link-two" href="/teachers">FOR FACULTY</a>
+  <a class="link-two" href="https://jhancock532.github.io/link-hover-effects/">TEACHER</a>
 </div>
 <div class="background-three link-container">
-  <a class="link-three" href="https://jhancock532.github.io/link-hover-effects/">SERVICES</a>
+  <a class="link-three" href="https://jhancock532.github.io/link-hover-effects/">ENROLLMENT</a>
 
 </body>
 </html>

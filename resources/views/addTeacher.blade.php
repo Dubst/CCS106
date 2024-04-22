@@ -135,7 +135,7 @@
 <body>
   <div class="container">
     <h2>Registration Form</h2>
-     <form class="row g-3" action="{{route('addStudent1.create')}}" method="post">
+     <form class="row g-3" action="{{route('addteacher.create')}}" method="post">
 
       <fieldset>
         @csrf
@@ -176,7 +176,7 @@
 
 
       <div class="button">
-        <button type="submit" class="btn btn-primary">Add Student</button>
+        <button type="submit" class="btn btn-primary">Add Teacher</button>
         <button type="reset" class="btn btn-danger">Cancel</button>
         <a class="btn btn-secondary" href="/student" role="button">Back</a>
 

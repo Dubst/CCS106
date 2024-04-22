@@ -12,11 +12,11 @@
     <div style="display: flex;  margin: auto;width: 100vw; height: 12vh;">
         <div class="container2">
             <img style="margin: auto; margin-right: 0; width: 15%; height: 100%;" src="img/Mic_alt_fill.png">
-            <h1 class="header">Enrollment System</h1>
+            <h1 class="header">Faculty</h1>
         </div>
         <div class="container3">
             <div class="dashboard">
-                List of Students
+                Faculty Members
           </div>
                 <!--<form class="out_btn" style="padding: 1px; justify-items: center;" action="session_destroy.php" method="POST">
                     <input type="submit" class="out_btn" style="margin:auto; color: white; width: 100%;" name="logout" value="Log Out">
@@ -28,8 +28,8 @@
         </div>
     <div class="container1">
         <div class="container4">
-            <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Enrollment</button>
-            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Student</button>
+            <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Teacher</button>
+            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Room</button>
             <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
         </div>
         <div class="container5">
@@ -40,10 +40,10 @@
 
                     </div>
                 </div>
-                <button class="reserve_btn" onClick="javascript:window.open('/addstudent', '_self');" >
+                <button class="reserve_btn" onClick="javascript:window.open('/addteacher', '_self');" >
                     <img style="width: 30%; height: 100%" src="img/Calendar_add_light.png">
                     <div class="containers1">
-                    <h1 style="font-size: 2.5rem">Add Student</h1>
+                    <h1 style="font-size: 2.5rem">Add Teachers</h1>
                     </div>
                 </button>
             </div>
@@ -63,22 +63,13 @@
                                     </tr>
                                 </thead>
                               <tbody>
-                                     @foreach($hd_students as $hd_student)
-                                    <tr>
-                                        <td>{{$hd_student['id']}}</td>
-                                        <td>{{$hd_student['fname']}}</td>
-                                        <td>{{$hd_student['lname']}}</td>
-                                        <td>{{$hd_student['address']}}</td>
-                                        <td>{{$hd_student['birthdate']}}</td>
-                                    </tr>
-                                    @endforeach
-                                    @foreach($students as $student)
+                                    @foreach($teachers as $teacher)
                                       <tr>
-                                        <td>{{$student->id}}</td>
-                                        <td>{{$student->fname}}</td>
-                                        <td>{{$student->lname}}</td>
-                                        <td>{{$student->address}}</td>
-                                        <td>{{$student->birthdate}}</td>
+                                        <td>{{$teacher->id}}</td>
+                                        <td>{{$teacher->fname}}</td>
+                                        <td>{{$teacher->lname}}</td>
+                                        <td>{{$teacher->address}}</td>
+                                        <td>{{$teacher->birthdate}}</td>
 
                                       </tr>
 
