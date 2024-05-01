@@ -40,62 +40,63 @@
 
                     </div>
                 </div>
-                <button class="reserve_btn" onClick="javascript:window.open('/addstudent', '_self');" >
+
+                <button class="reserve_btn" onClick="javascript:window.open('/enrollcourses/{{$students->id}}', '_self');" >
                     <img style="width: 30%; height: 100%" src="img/Calendar_add_light.png">
                     <div class="containers1">
-                    <h1 style="font-size: 2.5rem">Add Student</h1>
+                    <h1 style="font-size: 2.5rem">Enroll Course</h1>
                     </div>
-                </button>
+
             </div>
                     <div class="emptycontainer">
+                        @if ($students)
                         <div class="container my-5">
-                            <table class="table">
-                                <div class="input-group">
-                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                    <a href="" class="btn btn-outline-primary" data-mdb-ripple-init>search</a>
-                                </div
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+
+                                  <h5 class="card-title">{{$students->fname}}, {{$students->lname}}</h5>
+                                  <h6 class="card-subtitle mb-2 text-muted">ID NO: #{{$students->id}}</h6>
+                                </div>
+
+                              </div>
+                              <br>
+                              <p class="h2">Courses Enrolled: </p>
+                              <table class="table">
+
                                 <thead>
 
                                     <tr>
 
-                                  <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Address</th>
-                                  <th>Birthdate</th>
+                                        <th>Course ID</th>
+                                        <th>Course Name</th>
+                                        <th>Course Unit</th>
+                                        <th>Course Sched</th>
+                                        <th>Course Teacher</th>
+
 
                                     </tr>
                                 </thead>
                               <tbody>
-                                     @foreach($hd_students as $hd_student)
-                                    <tr>
-                                        <td>{{$hd_student['id']}}</td>
-                                        <td>{{$hd_student['fname']}}</td>
-                                        <td>{{$hd_student['lname']}}</td>
-                                        <td>{{$hd_student['address']}}</td>
-                                        <td>{{$hd_student['birthdate']}}</td>
-                                        <td><a class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a class='btn btn-danger btn-sm'>Delete</a></td>
-                                    </tr>
-                                    @endforeach
-                                    @foreach($students as $student)
-                                      <tr>
-                                        <td>{{$student->id}}</td>
-                                        <td>{{$student->fname}}</td>
-                                        <td>{{$student->lname}}</td>
-                                        <td>{{$student->address}}</td>
-                                        <td>{{$student->birthdate}}</td>
-                                        <td><a  href="/editstudent/{{$student->id}}"class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a href="delete/{{$student->id}}"class='btn btn-danger btn-sm'>Delete</a></td>
-                                      </tr>
 
+                                    @foreach ($students->courses as $course)
+                                    <tr>
+                                        <td>{{$course->id}}</td>
+                                        <td>{{$course->course_name}}</td>
+                                        <td>{{$course->course_unit}}</td>
+                                        <td>{{$course->course_sched}}</td>
+                                        <td>{{$course->teacher->lname}}, {{$course->teacher->fname}}</td>
+                                    </tr>
                                       @endforeach
-                                      {{ $students->links()}}
+
 
                             </tbody>
                               </table>
+
                               @include('succes_messsage')
                         </div>
+                        @else
+                            <p>Student not found.</p>
+                        @endif
                     </div>
         </div>
 

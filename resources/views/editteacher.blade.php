@@ -135,32 +135,32 @@
 <body>
   <div class="container">
     <h2>Registration Form</h2>
-     <form class="row g-3" action="{{route('addStudent1.create')}}" method="post">
-
+     <form class="row g-3" action="" method="post">
       <fieldset>
         @csrf
+
         <div class="input-field">
 
           <label for="fname" class="form-label">First Name</label>
           <i class="fa fa-user icon"></i>
-          <input type="name" class="form-control" id="fname" name="fname"  required>
+          <input type="name" class="form-control" id="fname" name="fname" value="{{$teachers->fname}}"  required>
 
         </div>
 
         <div class="input-field">
           <label for="lname" class="form-label">Last Name</label>
           <i class="fa-solid fa-people-roof icon"></i>
-          <input type="name" class="form-control" id="lname" name="lname" required>
+          <input type="name" class="form-control" id="lname" name="lname" value ="{{$teachers->lname}}" required>
         </div>
         <div class="input-field">
           <label for="inputAddress" class="form-label">Address</label>
           <i class="fa-solid fa-people-roof icon"></i>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" value="{{$teachers->address}}" required>
         </div>
         <div class="input-field">
           <label for="bdate" class="form-label">Birthdate</label>
           <i class="fa fa-envelope icon"></i>
-          <input type="date" class="form-control" id="bdate" name="bdate" required>
+          <input type="date" class="form-control" id="bdate" name="bdate" value="{{$teachers->birthdate}}" required>
         </div>
         <!--<div class="input-field">
             <label for="inputCity" class="form-label">City</label>
@@ -178,13 +178,15 @@
     -->
 
 
-      <div class="button">
+      <!--<div class="button">
         <button type="submit" class="btn btn-primary">Add Student</button>
         <button type="reset" class="btn btn-danger">Cancel</button>
         <a class="btn btn-secondary" href="/student" role="button">Back</a>
 
-      </div>
-
+      </div>-->
+      <div class="col-12">
+        <input href="/teachers" value="Submit Edit" type="submit" id="submit" style="background-color: #874CCC; color: white; border: none" class="btn btn-dark">
+     </div>
     </form>
   </div>
 </body>

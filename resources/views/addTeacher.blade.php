@@ -178,7 +178,7 @@
       <div class="button">
         <button type="submit" class="btn btn-primary">Add Teacher</button>
         <button type="reset" class="btn btn-danger">Cancel</button>
-        <a class="btn btn-secondary" href="/student" role="button">Back</a>
+        <a class="btn btn-secondary" href="/teachers" role="button">Back</a>
 
       </div>
 

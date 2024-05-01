@@ -22,7 +22,7 @@
 
     .container {
       padding: 40px;
-      width: 500px;
+      width: 900px;
       margin: 20px auto;
       background-color: #f1f1f1;
     }
@@ -134,56 +134,66 @@
 </head>
 <body>
   <div class="container">
-    <h2>Registration Form</h2>
-     <form class="row g-3" action="{{route('addStudent1.create')}}" method="post">
+    <h2>Enrollment Form</h2>
+     <form class="row g-3" action="{{route('enroll')}}" method="post">
 
       <fieldset>
         @csrf
-        <div class="input-field">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{$students->fname}}, {{$students->lname}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">ID NO: #{{$students->id}}</h6>
+                </div>
+              </div>
+              <br>
+              <p class="h2">Available Course: </p>
+              <table class="table">
 
-          <label for="fname" class="form-label">First Name</label>
-          <i class="fa fa-user icon"></i>
-          <input type="name" class="form-control" id="fname" name="fname"  required>
+                <thead>
 
-        </div>
+                    <tr>
 
-        <div class="input-field">
-          <label for="lname" class="form-label">Last Name</label>
-          <i class="fa-solid fa-people-roof icon"></i>
-          <input type="name" class="form-control" id="lname" name="lname" required>
-        </div>
-        <div class="input-field">
-          <label for="inputAddress" class="form-label">Address</label>
-          <i class="fa-solid fa-people-roof icon"></i>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required>
-        </div>
-        <div class="input-field">
-          <label for="bdate" class="form-label">Birthdate</label>
-          <i class="fa fa-envelope icon"></i>
-          <input type="date" class="form-control" id="bdate" name="bdate" required>
-        </div>
-        <!--<div class="input-field">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity" name="city" required>
-        </div>
-        <div class="input-field">
-            <label for="province" class="form-label">Province</label>
-            <input type="text" class="form-control" id="province" name="province" required>
-        </div>
-        <div class="input-field">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip" name="zip" required>
-        </div>
-
-    -->
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Course Unit</th>
+                        <th>Course Sched</th>
+                        <th>Course Teacher</th>
 
 
-      <div class="button">
-        <button type="submit" class="btn btn-primary">Add Student</button>
-        <button type="reset" class="btn btn-danger">Cancel</button>
-        <a class="btn btn-secondary" href="/student" role="button">Back</a>
+                    </tr>
+                </thead>
+              <tbody>
 
-      </div>
+
+                        @foreach ($courses as $course)
+
+                            <tr>
+                                <td>{{$course->id}}</td>
+                                <td>{{$course->course_name}}</td>
+                                <td>{{$course->course_unit}}.0</td>
+                                <td>{{$course->course_sched}}</td>
+                                <td>{{$course->teacher->lname}}, {{$course->teacher->fname}}</td>
+                            </tr>
+
+
+                      @endforeach
+
+
+            </tbody>
+              </table>
+
+
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="course_id">
+                    @foreach ($courses as $course)
+                    <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">Enroll</button>
+                <a class="btn btn-secondary" href="/enrollment" role="button">Back</a>
+                <input type="hidden" name="student_id" value="{{$students->id}}">
+              @include('succes_messsage')
+
+
 
     </form>
   </div>

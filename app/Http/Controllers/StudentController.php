@@ -4,7 +4,9 @@
 */
 namespace App\Http\Controllers;
 
-use App\Models\students;
+use App\Http\Requests\StudentRequest;
+use App\Models\Student;
+
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -34,9 +36,32 @@ class StudentController extends Controller
             ]
         ];
         return view('student', [
-            'students' => students::all(),
+            'students' => Student::orderBy('id')->paginate(5),
             'hd_students' => $hardcoded_students
         ]);
+    }
+
+    public function show($id)
+    {
+        $students = Student::findorfail($id);
+        return view('/editstudent', ['students' => $students]);
+    }
+
+    public function update(StudentRequest $request, $id){
+        $validated = $request->validated();
+        $info = Student::findorfail($id);
+        $info->update($validated);
+
+        $request->session()->regenerate();
+        return redirect('/student')->with('success', "Successfully Edited");
+    }
+
+
+    public function destroy($id)
+    {
+        $student = Student::findorfail($id);
+        $student -> delete();
+        return back()->with('success', 'User has been deleted');
     }
 }
 /*--JOREME N. BALIWIS

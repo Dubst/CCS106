@@ -48,49 +48,45 @@
                 </button>
             </div>
                     <div class="emptycontainer">
+                        <h2>Search Student ID:</h2>
+                        <form method="GET" action="{{route('search')}}">
+                            <input type="text" name="query" placeholder="Search...">
+                            <button type="submit">Search</button>
+                        </form>
                         <div class="container my-5">
                             <table class="table">
-                                <div class="input-group">
-                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                    <a href="" class="btn btn-outline-primary" data-mdb-ripple-init>search</a>
-                                </div
+
                                 <thead>
 
                                     <tr>
 
-                                  <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Address</th>
-                                  <th>Birthdate</th>
+                                        <th>Course ID</th>
+                                        <th>Course Name</th>
+                                        <th>Course Unit</th>
+                                        <th>Course Sched</th>
+                                        <th>Course Teacher</th>
+
 
                                     </tr>
                                 </thead>
                               <tbody>
-                                     @foreach($hd_students as $hd_student)
-                                    <tr>
-                                        <td>{{$hd_student['id']}}</td>
-                                        <td>{{$hd_student['fname']}}</td>
-                                        <td>{{$hd_student['lname']}}</td>
-                                        <td>{{$hd_student['address']}}</td>
-                                        <td>{{$hd_student['birthdate']}}</td>
-                                        <td><a class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a class='btn btn-danger btn-sm'>Delete</a></td>
-                                    </tr>
-                                    @endforeach
-                                    @foreach($students as $student)
-                                      <tr>
-                                        <td>{{$student->id}}</td>
-                                        <td>{{$student->fname}}</td>
-                                        <td>{{$student->lname}}</td>
-                                        <td>{{$student->address}}</td>
-                                        <td>{{$student->birthdate}}</td>
-                                        <td><a  href="/editstudent/{{$student->id}}"class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a href="delete/{{$student->id}}"class='btn btn-danger btn-sm'>Delete</a></td>
-                                      </tr>
+
+                                <h1>Available Courses</h1>
+
+                                        @foreach ($courses as $course)
+
+                                            <tr>
+                                                <td>{{$course->id}}</td>
+                                                <td>{{$course->course_name}}</td>
+                                                <td>{{$course->course_unit}}</td>
+                                                <td>{{$course->course_sched}}</td>
+                                                <td>{{$course->teacher->lname}}, {{$course->teacher->fname}}</td>
+
+                                            </tr>
+
 
                                       @endforeach
-                                      {{ $students->links()}}
+                                      {{ $courses->links()}}
 
                             </tbody>
                               </table>
@@ -109,7 +105,7 @@
         location.href = "createroom.html";
     };
     document.getElementById("homebtn").onclick = function () {
-        location.href = "/enrollment";
+        location.href = "homepage.php";
     };
     document.getElementById("stdntbtn").onclick = function () {
         location.href = "/student";

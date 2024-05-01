@@ -16,7 +16,7 @@
         </div>
         <div class="container3">
             <div class="dashboard">
-                List of Students
+                List of Courses
           </div>
                 <!--<form class="out_btn" style="padding: 1px; justify-items: center;" action="session_destroy.php" method="POST">
                     <input type="submit" class="out_btn" style="margin:auto; color: white; width: 100%;" name="logout" value="Log Out">
@@ -28,9 +28,9 @@
         </div>
     <div class="container1">
         <div class="container4">
-            <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Enrollment</button>
-            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Student</button>
-            <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
+            <button class="hmpge_btn" id="teacherbtn"><img src="img/chart_png.png"><br>Teacher</button>
+            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Room</button>
+            <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Course</button>
         </div>
         <div class="container5">
             <div class="containers">
@@ -40,10 +40,10 @@
 
                     </div>
                 </div>
-                <button class="reserve_btn" onClick="javascript:window.open('/addstudent', '_self');" >
+                <button class="reserve_btn" onClick="javascript:window.open('/addCourse', '_self');" >
                     <img style="width: 30%; height: 100%" src="img/Calendar_add_light.png">
                     <div class="containers1">
-                    <h1 style="font-size: 2.5rem">Add Student</h1>
+                    <h1 style="font-size: 2.5rem">Add Course</h1>
                     </div>
                 </button>
             </div>
@@ -58,43 +58,33 @@
 
                                     <tr>
 
-                                  <th>ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Address</th>
-                                  <th>Birthdate</th>
+                                        <th>Course ID</th>
+                                        <th>Course Name</th>
+                                        <th>Course Schedule</th>
+                                        <th>Course Unit</th>
+                                        <th>Course Teacher</th>
 
                                     </tr>
                                 </thead>
                               <tbody>
-                                     @foreach($hd_students as $hd_student)
+                                     @foreach($courses as $course)
                                     <tr>
-                                        <td>{{$hd_student['id']}}</td>
-                                        <td>{{$hd_student['fname']}}</td>
-                                        <td>{{$hd_student['lname']}}</td>
-                                        <td>{{$hd_student['address']}}</td>
-                                        <td>{{$hd_student['birthdate']}}</td>
-                                        <td><a class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a class='btn btn-danger btn-sm'>Delete</a></td>
+                                        <td>{{$course['id']}}</td>
+                                        <td>{{$course['course_name']}}</td>
+                                        <td>{{$course['course_sched']}}</td>
+                                        <td>{{$course['course_unit']}}.0</td>
+                                        <td>{{$course->teacher->lname}}, {{$course->teacher->fname}}, </td>
+                                        <td><a href="/viewStudents/{{$course->id}}"class='btn btn-primary btn-sm'>View</a></td>
+                                        <td><a href="/deleteCourse/{{$course->id}}"class='btn btn-danger btn-sm'>Delete</a></td>
                                     </tr>
                                     @endforeach
-                                    @foreach($students as $student)
-                                      <tr>
-                                        <td>{{$student->id}}</td>
-                                        <td>{{$student->fname}}</td>
-                                        <td>{{$student->lname}}</td>
-                                        <td>{{$student->address}}</td>
-                                        <td>{{$student->birthdate}}</td>
-                                        <td><a  href="/editstudent/{{$student->id}}"class='btn btn-primary btn-sm'>Edit</a></td>
-                                        <td><a href="delete/{{$student->id}}"class='btn btn-danger btn-sm'>Delete</a></td>
-                                      </tr>
 
-                                      @endforeach
-                                      {{ $students->links()}}
 
                             </tbody>
                               </table>
+                              @include('error_message')
                               @include('succes_messsage')
+
                         </div>
                     </div>
         </div>
@@ -108,8 +98,8 @@
     document.getElementById("roombtn").onclick = function () {
         location.href = "createroom.html";
     };
-    document.getElementById("homebtn").onclick = function () {
-        location.href = "/enrollment";
+    document.getElementById("teacherbtn").onclick = function () {
+        location.href = "/teachers";
     };
     document.getElementById("stdntbtn").onclick = function () {
         location.href = "/student";

@@ -4,13 +4,21 @@
 */
 namespace App\Http\Controllers;
 
-use App\Models\students;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class addstudentcontroller extends Controller
 {
     public function index(){
-        $student = students::create([
+
+        request()->validate([
+            'fname' => 'required|min:2|max:30',
+            'lname'=> 'required|min:1|max:30',
+            'address' => 'required|min:1|max:100',
+        ]
+        );
+
+        $student = Student::create([
             'fname' => request()->get('fname', ''),
             'lname' => request()->get('lname', ''),
             'address' => request()->get('address', ''),
