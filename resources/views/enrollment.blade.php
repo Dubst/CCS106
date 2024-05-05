@@ -16,7 +16,7 @@
         </div>
         <div class="container3">
             <div class="dashboard">
-                List of Students
+                List of Courses
           </div>
                 <!--<form class="out_btn" style="padding: 1px; justify-items: center;" action="session_destroy.php" method="POST">
                     <input type="submit" class="out_btn" style="margin:auto; color: white; width: 100%;" name="logout" value="Log Out">
@@ -30,7 +30,7 @@
         <div class="container4">
             <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Enrollment</button>
             <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Student</button>
-            <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
+            <button class="hmpge_btn"></button>
         </div>
         <div class="container5">
             <div class="containers">
@@ -40,10 +40,10 @@
 
                     </div>
                 </div>
-                <button class="reserve_btn" onClick="javascript:window.open('/addstudent', '_self');" >
+                <button class="reserve_btn"  >
                     <img style="width: 30%; height: 100%" src="img/Calendar_add_light.png">
                     <div class="containers1">
-                    <h1 style="font-size: 2.5rem">Add Student</h1>
+                    <h1 style="font-size: 2.5rem">N/A</h1>
                     </div>
                 </button>
             </div>
@@ -52,7 +52,9 @@
                         <form method="GET" action="{{route('search')}}">
                             <input type="text" name="query" placeholder="Search...">
                             <button type="submit">Search</button>
+
                         </form>
+                        @include('error_message')
                         <div class="container my-5">
                             <table class="table">
 
@@ -101,11 +103,9 @@
 
 
     <script type="text/javascript">
-    document.getElementById("roombtn").onclick = function () {
-        location.href = "createroom.html";
-    };
+
     document.getElementById("homebtn").onclick = function () {
-        location.href = "homepage.php";
+        location.href = "/enrollment";
     };
     document.getElementById("stdntbtn").onclick = function () {
         location.href = "/student";

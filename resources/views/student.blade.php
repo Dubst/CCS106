@@ -28,9 +28,9 @@
         </div>
     <div class="container1">
         <div class="container4">
-            <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Enrollment</button>
+            <button class="hmpge_btn" id="homebutton"><img src="img/chart_png.png"><br>Enrollment</button>
             <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Student</button>
-            <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
+            <button class="hmpge_btn"><br></button>
         </div>
         <div class="container5">
             <div class="containers">
@@ -105,10 +105,8 @@
 
 
     <script type="text/javascript">
-    document.getElementById("roombtn").onclick = function () {
-        location.href = "createroom.html";
-    };
-    document.getElementById("homebtn").onclick = function () {
+
+    document.getElementById("homebutton").onclick = function () {
         location.href = "/enrollment";
     };
     document.getElementById("stdntbtn").onclick = function () {

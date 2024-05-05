@@ -29,7 +29,7 @@
     <div class="container1">
         <div class="container4">
             <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Teacher</button>
-            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Room</button>
+            <button class="hmpge_btn"><br>NOT AVAILABLE</button>
             <button class="hmpge_btn" id="subjectbtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
         </div>
         <div class="container5">
@@ -96,7 +96,7 @@
         location.href = "/Course";
     };
     document.getElementById("homebtn").onclick = function () {
-        location.href = "homepage.php";
+        location.href = "/teachers";
     };
     document.getElementById("stdntbtn").onclick = function () {
         location.href = "/student";

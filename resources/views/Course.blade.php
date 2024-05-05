@@ -29,7 +29,7 @@
     <div class="container1">
         <div class="container4">
             <button class="hmpge_btn" id="teacherbtn"><img src="img/chart_png.png"><br>Teacher</button>
-            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Room</button>
+            <button class="hmpge_btn">NOT AVAILABLE</button>
             <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Course</button>
         </div>
         <div class="container5">

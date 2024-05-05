@@ -12,7 +12,7 @@ class EnrollmentController extends Controller
 {
     public function index(){
 
-     $avail_course = Course::with('Teacher')->paginate(2);
+     $avail_course = Course::with('Teacher')->paginate(4);
 
         return view('enrollment', [
             'courses' => $avail_course
@@ -22,11 +22,23 @@ class EnrollmentController extends Controller
 
     public function search(Request $request){
 
-        $id = $request->input('query');
+        $validatedData = $request->validate([
+            'query' => 'required|exists:students,id'
+        ], [
+            'query.exists' => 'The provided ID does not exist.'
+        ]);
+
+        $id = $validatedData['query'];
+
+        //$id = $request->input('query');
        //$students = Student::with('courses.Teacher')->findOrFail($id)->get();
        $student = Student::with('courses.teacher')->find($id);
        /* $student = Student::findOrFail($id);
         $student->load('courses.Teacher');*/
+        if (!$student) {
+            return redirect()->back()->with('error', 'The STUDENT ID does not exist.');
+        }
+
         return view('/studentenrolledcourse', ['students' => $student]);
 
     }

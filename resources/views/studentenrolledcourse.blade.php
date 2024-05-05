@@ -16,21 +16,21 @@
         </div>
         <div class="container3">
             <div class="dashboard">
-                List of Students
+                Student ID: {{$students->id}}
           </div>
                 <!--<form class="out_btn" style="padding: 1px; justify-items: center;" action="session_destroy.php" method="POST">
                     <input type="submit" class="out_btn" style="margin:auto; color: white; width: 100%;" name="logout" value="Log Out">
                 </form> -->
-           <a class="btn btn-primary" href="/dashboard" role="button" >Back</a>
+           <a class="btn btn-primary" href="/enrollment" role="button" >Back</a>
 
 
         </div>
         </div>
     <div class="container1">
         <div class="container4">
-            <button class="hmpge_btn" id="homebtn"><img src="img/chart_png.png"><br>Enrollment</button>
-            <button class="hmpge_btn" id="stdntbtn"><img src="img/Paper_light.png"><br>Student</button>
-            <button class="hmpge_btn" id="roombtn"><img src="img/Desk_alt_light.png"><br>Subject</button>
+            <button class="hmpge_btn" ><br></button>
+            <button class="hmpge_btn"><br><button>
+            <button class="hmpge_btn"><br></button>
         </div>
         <div class="container5">
             <div class="containers">
