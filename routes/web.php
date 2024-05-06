@@ -77,6 +77,8 @@ Route::get('/enrollment', [ EnrollmentController::class, 'index'])->name('enroll
 Route::get('/search', [ EnrollmentController::class, 'search'])->name('search');
 Route::get('/enrollcourses/{id}', [ EnrollmentController::class, 'show']);
 Route::post('/enroll', [EnrollmentController::class, 'enroll'])->name('enroll');
+Route::get('/student/{student_id}/course/{course_id}/pivot/{pivot_id}', [ EnrollmentController::class, 'destroyPivot']);
+
 
 //end of enrollment controller--------------------------------
 

@@ -11,7 +11,6 @@
 <body>
     <div style="display: flex;  margin: auto;width: 100vw; height: 12vh;">
         <div class="container2">
-            <img style="margin: auto; margin-right: 0; width: 15%; height: 100%;" src="img/Mic_alt_fill.png">
             <h1 class="header">Enrollment System</h1>
         </div>
         <div class="container3">

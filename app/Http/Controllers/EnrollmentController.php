@@ -30,18 +30,23 @@ class EnrollmentController extends Controller
 
         $id = $validatedData['query'];
 
-        //$id = $request->input('query');
-       //$students = Student::with('courses.Teacher')->findOrFail($id)->get();
-       $student = Student::with('courses.teacher')->find($id);
-       /* $student = Student::findOrFail($id);
-        $student->load('courses.Teacher');*/
+
+      // $student = Student::with('courses.teacher')->find($id);
+      $student = Student::with(['courses' => function ($query) {
+        $query->with('teacher')->withPivot('id');
+    }])->find($id);
+
+
         if (!$student) {
             return redirect()->back()->with('error', 'The STUDENT ID does not exist.');
         }
 
-        return view('/studentenrolledcourse', ['students' => $student]);
+        $courses = $student->courses()->paginate(2);
+
+        return view('/studentenrolledcourse', ['students' => $student], ['courses'=> $courses]);
 
     }
+
 
     public function enroll(Request $request){
 
@@ -66,5 +71,20 @@ class EnrollmentController extends Controller
             'students' => $student
         ]);
     }
+
+    public function destroyPivot($student_id, $course_id, $pivot_id) {
+
+        $student = Student::find($student_id);
+
+        if (!$student) {
+            return redirect()->back()->with('error', 'The student with the provided ID does not exist.');
+        }
+
+        // Detach the specific pivot row
+        $student->courses()->detach($course_id, ['id' => $pivot_id]);
+
+        return redirect()->back()->with('success', 'Pivot row deleted successfully.');
+    }
+
 
 }
